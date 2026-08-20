@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campground Activities</title>
+    <style>
+        :root {
+            --primary: #2c5e3b; /* Forest Green */
+            --bg-color: #f4f1ea; /* Sand/Off-white */
+            --card-bg: #ffffff;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            background-color: #1f4229;
+            padding: 15px;
+        }
+
+        button {
+            background: transparent;
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover, button.active {
+            background: var(--text-light);
+            color: var(--primary);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .activity-section {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .activity-section.active-section {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            background-color: #a3c2a4; /* Placeholder color */
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .date-badge {
+            background: var(--primary);
+            color: var(--text-light);
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Pine Valley Campground</h1>
+        <p>Your guide to the great outdoors.</p>
+    </header>
+
+    <div class="controls">
+        <button id="btn-current" class="active">Current & Upcoming</button>
+        <button id="btn-past">Past Memories</button>
+    </div>
+
+    <main>
+        <!-- Current & Upcoming Activities -->
+        <section id="current-activities" class="activity-section active-section">
+            <h2>Happenings This Week</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-content">
+                        <span class="date-badge">Today @ 7:00 PM</span>
+                        <h3>Lakeside Bonfire & S'mores</h3>
+                        <p>Join us by the main fire pit for a classic evening of storytelling and roasted marshmallows. Supplies provided!</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img"></div>
+                    <div class="card-content">
+                        <span class="date-badge">Saturday @ 9:00 AM</span>
+                        <h3>Guided Nature Hike</h3>
+                        <p>A 2-mile family-friendly hike exploring local flora. Meet at the camp store.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Past Activities -->
+        <section id="past-activities" class="activity-section">
+            <h2>Campground Memories</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-img" style="background-color: #d4a373;"></div>
+                    <div class="card-content">
+                        <span class="date-badge" style="background: #555;">July 4th Weekend</span>
+                        <h3>Annual Chili Cook-Off</h3>
+                        <p>Congratulations to Site 42 for winning this year's golden ladle! Thanks to everyone who participated.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #d4a373;"></div>
+                    <div class="card-content">
+                        <span class="date-badge" style="background: #555;">June 2026</span>
+                        <h3>Summer Solstice Concert</h3>
+                        <p>A beautiful acoustic evening under the stars featuring local musicians.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const btnCurrent = document.getElementById('btn-current');
+        const btnPast = document.getElementById('btn-past');
+        const secCurrent = document.getElementById('current-activities');
+        const secPast = document.getElementById('past-activities');
+
+        function switchTab(showCurrent) {
+            if (showCurrent) {
+                btnCurrent.classList.add('active');
+                btnPast.classList.remove('active');
+                secCurrent.classList.add('active-section');
+                secPast.classList.remove('active-section');
+            } else {
+                btnPast.classList.add('active');
+                btnCurrent.classList.remove('active');
+                secPast.classList.add('active-section');
+                secCurrent.classList.remove('active-section');
+            }
+        }
+
+        btnCurrent.addEventListener('click', () => switchTab(true));
+        btnPast.addEventListener('click', () => switchTab(false));
+    </script>
+
+</body>
+</html>
