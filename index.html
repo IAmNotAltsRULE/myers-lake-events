@@ -73,11 +73,20 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* New Month Header Style */
+        .month-header {
+            font-size: 1.5em;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
-            margin-top: 20px;
         }
 
         .card {
@@ -118,7 +127,7 @@
 <body>
 
     <header>
-        <h1>Myers Lake Campign & Cabins Campground</h1>
+        <h1>Myers Lake Camping & Cabins Campground</h1>
         <p>Happy Campers Welcome</p>
     </header>
 
@@ -130,7 +139,8 @@
     <main>
         <!-- Current & Upcoming Activities -->
         <section id="current-activities" class="activity-section active-section">
-            <h2>Happenings This Week</h2>
+            
+            <h3 class="month-header">August 2026</h3>
             <div class="grid">
                 <div class="card">
                     <div class="card-img"></div>
@@ -147,7 +157,7 @@
                         <h3>Coffee & Donuts</h3>
                         <p>Start your day the sweet way! Find at the camp store.</p>
                     </div>
-                     </div>
+                </div>
                 <div class="card">
                     <div class="card-img"></div>
                     <div class="card-content">
@@ -155,7 +165,7 @@
                         <h3>Rock Painting Craft</h3>
                         <p>Start your day the sweet way! Find at the camp store.</p>
                     </div>
-                     </div>
+                </div>
                 <div class="card">
                     <div class="card-img"></div>
                     <div class="card-content">
@@ -169,7 +179,8 @@
 
         <!-- Past Activities -->
         <section id="past-activities" class="activity-section">
-            <h2>Campground Memories</h2>
+            
+            <h3 class="month-header">July 2026</h3>
             <div class="grid">
                 <div class="card">
                     <div class="card-img" style="background-color: #d4a373;"></div>
@@ -179,6 +190,10 @@
                         <p>Congratulations to Site 42 for winning this year's golden ladle! Thanks to everyone who participated.</p>
                     </div>
                 </div>
+            </div>
+
+            <h3 class="month-header">June 2026</h3>
+            <div class="grid">
                 <div class="card">
                     <div class="card-img" style="background-color: #d4a373;"></div>
                     <div class="card-content">
@@ -188,6 +203,7 @@
                     </div>
                 </div>
             </div>
+            
         </section>
     </main>
 
